@@ -50,7 +50,7 @@ namespace UnityStandardAssets._2D
         }
 
 
-        public void Move(float move, bool crouch, bool jump)
+        public void Move(float move, bool crouch, bool jump, bool superjump)
         {
             // If crouching, check to see if the character can stand up
             if (!crouch && m_Anim.GetBool("Crouch"))
@@ -96,6 +96,16 @@ namespace UnityStandardAssets._2D
                 // Add a vertical force to the player.
                 m_Grounded = false;
                 m_Anim.SetBool("Ground", false);
+                m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                superjump = false;
+            }
+            // If the player should jump and crouch simultaneously...
+            if (m_Grounded && superjump && m_Anim.GetBool("Ground"))
+            {
+                // Add a vertical forc super jump force to the player.
+                m_Grounded = false;
+                m_Anim.SetBool("Ground", false);
+                m_JumpForce = 1600f;
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
             }
         }

@@ -22,7 +22,7 @@ public class EnemyReaction : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             // This scene HAS TO BE IN THE BUILD SETTINGS!!!
-            SceneManager.LoadScene("scene1");
+            SceneManager.LoadScene("scene1_2UP");
         }
     }
 }
