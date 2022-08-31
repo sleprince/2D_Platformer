@@ -22,7 +22,7 @@ namespace UnityStandardAssets._2D
             if (!m_Jump)
             {
                 // Read the jump input in Update so button presses aren't missed.
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                m_Jump = CrossPlatformInputManager.GetButtonDown("P1 Jump");
             }
         }
 
@@ -30,8 +30,8 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Read the inputs.
-            bool crouch = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.JoystickButton0);
-            bool superjump = (CrossPlatformInputManager.GetButtonDown("Fire1") && CrossPlatformInputManager.GetButtonDown("Jump"));
+            bool crouch = (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.Joystick1Button1));
+            bool superjump = (CrossPlatformInputManager.GetButtonDown("P1 Jump") && (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.Joystick1Button1)));
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             // Pass all parameters to the character control script.
             m_Character.Move(h, crouch, m_Jump, superjump);

@@ -30,8 +30,8 @@ namespace UnityStandardAssets._2D
         private void FixedUpdate()
         {
             // Read the inputs.
-            bool crouch = Input.GetKey(KeyCode.O) || Input.GetKey(KeyCode.Joystick2Button1);
-            bool superjump = (CrossPlatformInputManager.GetButtonDown("P2 Fire2") && CrossPlatformInputManager.GetButtonDown("P2 Fire1"));
+            bool crouch = (Input.GetKey(KeyCode.O) || Input.GetKey(KeyCode.Joystick2Button1));
+            bool superjump = (CrossPlatformInputManager.GetButtonDown("P2 Fire1") && (Input.GetKey(KeyCode.O) || Input.GetKey(KeyCode.Joystick2Button1)));
             float h = CrossPlatformInputManager.GetAxis("P2 Horizontal");
             // Pass all parameters to the character control script.
             m_Character2.Move(h, crouch, m_Jump, superjump);
