@@ -107,6 +107,7 @@ namespace UnityStandardAssets._2D
                 m_Anim.SetBool("Ground", false);
                 m_JumpForce = 1600f;
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+                m_JumpForce = 800f;
             }
         }
 
